@@ -6,11 +6,19 @@
 ; FMMT666(ASkr)
 
 
+;-------------------------------------------------------------------------------------------------
+WinMovie_Find()
+{
+    if WinExist( "D3DGear Properties" )
+        return 1
+    else
+        return 0
+}
+
 
 ;-------------------------------------------------------------------------------------------------
-WinMovie_FindAndActivate( )
+WinMovie_FindAndActivate()
 {
-    ; as it seems, it is not possible to use a variable for the search string...
     if WinExist( "D3DGear Properties" )
     {
         WinActivate
@@ -21,18 +29,10 @@ WinMovie_FindAndActivate( )
 }
 
 
-;-------------------------------------------------------------------------------------------------
-if !WinMovie_FindAndActivate()
-{
-    MsgBox ERROR: Could not find the D3DGear Properties window.
-    exit -1
-}
-
 
 ;-------------------------------------------------------------------------------------------------
 ;--- main action
 ;-------------------------------------------------------------------------------------------------
-MsgBox, Select the "Record Movie" page, then click OK.
 Gui, Add, Text, w500 Center, *** TESTING TESTING TESTING TESTING ***
 Gui, Add, Button, , Read Configuration
 Gui, Add, ListView, w500 h400 NoSort ReadOnly gListDebug, Setting|Value
@@ -50,9 +50,43 @@ ListDebug:
 
 ;-------------------------------------------------------------------------------------------------
 ButtonReadConfiguration:
-    WinMovie_FindAndActivate( )
+
+    ; --- check that we are working with the right stuff here...
+
+    if( !WinMovie_FindAndActivate() )
+    {
+        MsgBox Cannot find the D3DGear Properties window.
+        return
+    }
+
+    ControlGetText, tmpVar, Static12, A
+    if( tmpVar != "Save movie file to this folder:" )
+    {
+        MsgBox There should be a text field`n"Save movie file to this folder:",`nbut I can't find it...
+        return
+    }
+    ; It is not required that the "Record Movie" tab is activated, but it's better if it is.
+    ControlGet, tmpVar, Visible, , Static12, A 
+    if( tmpVar = 0 )
+    {
+        MsgBox Please activate the "Record Movie" tab in D3DGear first.
+        return 
+    }
+
+
+    ; --- BUTTON TESTING
+    ; This is going to be a problem.
+    ; As an alternative, what about the registry?
+    ;   HKEY_CURRENT_USER\Software\D3DGear
+    ; ControlGet, valEnable, Checked, , Button14   ; does not work
+    ; ControlGet, valEnable, Enabled, , Button14   ; does work; could be a workaround
+    ; ControlGet, valEnable, Hwnd, , Button14      ; does work
+    ; MsgBox % "Hier:" valEnable
+    ; return
+
 
     ; --- basic settings
+    ControlGet, valEnabled, Enabled, , Edit2, A
     ControlGetText, txtSavePath, Edit2, A
     ControlGetText, txtCaptureMode, ComboBox12, A
     ControlGetText, txtHotkey, Edit3, A
