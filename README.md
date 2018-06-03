@@ -17,16 +17,19 @@ NOT FUNCTIONAL RIGHT NOW.
 
 ## TODO
 
-  - a lot
+  - find a way to read the checkboxes (which actually are buttons)
+  - add some "save as preset" buttons or other selection
+  - implement writing to the GUI
+  - find a way to navigate through the tabs
   - ...
-
 
 ---
 
 ## CHANGES
 
-### V0.1
+### 2018/06/XX:
     - just learned how to AutoHotkey w/o jumping off the roof
+    - reading of all combo and edit fields of the "Record Movie" tab
           
 
 
