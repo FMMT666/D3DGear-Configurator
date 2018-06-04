@@ -120,13 +120,13 @@ ButtonReadConfiguration:
     RegRead, regResolution2, HKEY_CURRENT_USER\Software\D3DGear\Movie, Resolution2
 
     ControlGetText, txtFrameRate, Edit5, A
-    ; RegRead, reg???, HKEY_CURRENT_USER\Software\D3DGear\Movie, ???
+    RegRead, regMovieFrameRate2, HKEY_CURRENT_USER\Software\D3DGear\Movie, MovieFrameRate2
 
     ControlGetText, txtFormat, ComboBox1, A
     RegRead, regMovieFormat2, HKEY_CURRENT_USER\Software\D3DGear\Movie, MovieFormat2
 
     ControlGetText, txtThreads, ComboBox7, A
-    ; RegRead, reg???, HKEY_CURRENT_USER\Software\D3DGear\Movie, ???
+    RegRead, regMovieEncodingThread, HKEY_CURRENT_USER\Software\D3DGear\Movie, MovieEncodingThread
 
     ControlGetText, txtVideoCodec, ComboBox2, A
     RegRead, regVideoCodec3, HKEY_CURRENT_USER\Software\D3DGear\Movie, VideoCodec3
@@ -137,45 +137,63 @@ ButtonReadConfiguration:
 
     ; --- audio settings
     ControlGetText, txtAudioCodec, ComboBox11, A
-    ; RegRead, reg???, HKEY_CURRENT_USER\Software\D3DGear\Movie, ???
+    RegRead, regAudioCodec3, HKEY_CURRENT_USER\Software\D3DGear\Movie, AudioCodec3
+
+    RegRead, regEnableAudioRecording, HKEY_CURRENT_USER\Software\D3DGear\Movie, EnableAudioRecording
 
     ControlGetText, txtMainSound, ComboBox6, A
-    RegRead, regDeviceName2, HKEY_CURRENT_USER\Software\D3DGear\Movie, DeviceName2
+    RegRead, regDeviceName2, HKEY_CURRENT_USER\Software\D3DGear\Movie, RecDeviceName2
 
     ControlGetText, txtMainVolume, Edit6, A
-    RegRead, regDeviceVolume, HKEY_CURRENT_USER\Software\D3DGear\Movie, DeviceVolume
+    RegRead, regRecDeviceVolume, HKEY_CURRENT_USER\Software\D3DGear\Movie, RecDeviceVolume
+
+    RegRead, regEnableMicRecording, HKEY_CURRENT_USER\Software\D3DGear\Movie, EnableMicRecording
 
     ControlGetText, txtMicro, ComboBox5, A
-    ; RegRead, reg???, HKEY_CURRENT_USER\Software\D3DGear\Movie, ???
+    RegRead, regMicDeviceName2, HKEY_CURRENT_USER\Software\D3DGear\Movie, MicDeviceName2
 
     ControlGetText, txtMicroVolume, Edit7, A
     RegRead, regMicDeviceVolume, HKEY_CURRENT_USER\Software\D3DGear\Movie, MicDeviceVolume
 
+    RegRead, regIgnoreSurroundChannel, HKEY_CURRENT_USER\Software\D3DGear\Movie, IgnoreSurroundChannel
+
     ControlGetText, txtAudioStreams, ComboBox13, A
-    ; RegRead, reg???, HKEY_CURRENT_USER\Software\D3DGear\Movie, ???
+    RegRead, regAudioStreamSave, HKEY_CURRENT_USER\Software\D3DGear\Movie, AudioStreamSave
+
+    RegRead, regIncludeMouseCursor, HKEY_CURRENT_USER\Software\D3DGear\Movie, IncludeMouseCursor
+
+    RegRead, regIncludeFramerate1, HKEY_CURRENT_USER\Software\D3DGear\Movie, IncludeFramerate1
 
 
     ; --- display all that stuff
     LV_Delete()
 
-    LV_Add( , "Enabled",           ""              , "EnableMovie"        , regEnableMovie              )
-    LV_Add( , "Path",              txtSavePath     , "SaveFolder2"        , regSaveFolder2              )
-    LV_Add( , "Capture Mode",      txtCaptureMode  , "HotkeyMode"         , regHotKeyMode               )
-    LV_Add( , "Hotkey",            txtHotkey       , "Hotkey2"            , regHotkey2                  )
-                             
-    LV_Add( , "Resolution",        txtResolution   , "Resolution2"        , regResolution2              )
-    LV_Add( , "Frame Rate",        txtFrameRate    , ""                   , ""                          )
-    LV_Add( , "Format",            txtFormat       , "MovieFormat2"       , regMovieFormat2             ) 
-    LV_Add( , "Threads",           txtThreads      , ""                   , ""                          )
-    LV_Add( , "Video Codec",       txtVideoCodec   , "VideoCodec3"        , regVideoCodec3              )
-    LV_Add( , "Quality",           txtQuality      , "MovieQuality"       , regMovieQuality             ) 
-                             
-    LV_Add( , "Audio Codec",       txtAudioCodec   , ""                   , ""                          )
-    LV_Add( , "Main Sound",        txtMainSound    , "DeviceName2"        , regDeviceName2              )
-    LV_Add( , "Main Volume",       txtMainVolume   , "DeviceVolume"       , regDeviceVolume             )
-    LV_Add( , "Microphone",        txtMicro        , ""                   , ""                          )
-    LV_Add( , "Microphone Volume", txtMicroVolume  , "MicDeviceVolume"    , regMicDeviceVolume          )
-    LV_Add( , "Audio Streams",     txtAudioStreams , ""                   , ""                          )
+    LV_Add( , "Enabled",           valEnabled            , "EnableMovie"           , regEnableMovie              )
+    LV_Add( , "Path",              txtSavePath           , "SaveFolder2"           , regSaveFolder2              )
+    LV_Add( , "Capture Mode",      txtCaptureMode        , "HotkeyMode"            , regHotKeyMode               )
+    LV_Add( , "Hotkey",            txtHotkey             , "Hotkey2"               , regHotkey2                  )
+                                      
+    LV_Add( , "Resolution",        txtResolution         , "Resolution2"           , regResolution2              )
+    LV_Add( , "Frame Rate",        txtFrameRate          , "MovieFrameRate2"       , regMovieFrameRate2          )
+    LV_Add( , "Format",            txtFormat             , "MovieFormat2"          , regMovieFormat2             ) 
+    LV_Add( , "Threads",           txtThreads            , "MovieEncodingThread"   , regMovieEncodingThread      )
+    LV_Add( , "Video Codec",       txtVideoCodec         , "VideoCodec3"           , regVideoCodec3              )
+    LV_Add( , "Quality",           txtQuality            , "MovieQuality"          , regMovieQuality             ) 
+                                      
+    LV_Add( , "Audio Codec",       txtAudioCodec         , "AudioCodec3"           , regAudioCodec3              )
+    LV_Add( , "Main Sound Enable", "---"                 , "EnableAudioRecording"  , regEnableAudioRecording     )
+    LV_Add( , "Main Sound",        txtMainSound          , "DeviceName2"           , regDeviceName2              )
+    LV_Add( , "Main Volume",       txtMainVolume         , "RecDeviceVolume"       , regRecDeviceVolume          )
+    LV_Add( , "Microphone Enable", "---"                 , "EnableMicRecording"    , regEnableMicRecording       )
+    LV_Add( , "Microphone",        txtMicro              , "MicDeviceName2"        , regMicDeviceName2           )
+    LV_Add( , "Microphone Volume", txtMicroVolume        , "MicDeviceVolume"       , regMicDeviceVolume          )
+    LV_Add( , "Convert Surround",  "---"                 , "IgnoreSurroundChannel" , regIgnoreSurroundChannel    )
+    LV_Add( , "Audio Streams",     txtAudioStreams       , "AudioStreamSave"       , regAudioStreamSave          )
+    LV_Add( , "Game Audio Only",   "---"                 , "---"                   , "---"                       )
+
+    LV_Add( , "Capture Mouse",     "---"                 , "IncludeMouseCursor"    , regIncludeMouseCursor       )
+    LV_Add( , "Include Framerate", "---"                 , "IncludeFramerate1"     , regIncludeFramerate1        )
+
 
     GuiControl, +Redraw, ListDebug
     LV_ModifyCol()
