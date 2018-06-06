@@ -79,6 +79,35 @@ NOT COMPLETELY FUNCTIONAL RIGHT NOW.
   Without any entry in the registry, my system's default is "MP3" (REG_DWORD 0x1), the 2nd entry...  
   Maybe there's a dirty workaround, somewhere out there :-)
 
+  A fresh installation of D3DGear only creates the (movie) key/value pair
+
+  Almost all features are in [HKEY_CURRENT_USER\Software\D3DGear\Movie]:
+
+    "VideoCodec3"=dword:00000006
+    "SaveFolder2"="C:\\Users\user\Videos"
+
+  The rest of the GUI is set to:
+
+  - Game Mode
+  - Hotkey F8
+  - 1280x720
+  - 30 fps
+  - Format AVI2 (OpenDML), 2nd combo box item
+  - Threads "Auto", 1st combo box item
+  - Fast MPEG-4 Version 2 Codec, 1st combo box item
+  - Best Quality, 3rd combo box item
+  - Audio MP3, 2nd combo box item
+  - [X] Main sound, enabled
+  - Default playback device, 1st combo boy item
+  - Main Volume 100
+  - [ ] Microphone, nothing (don't have one attached)
+  - Mic Volume 100
+  - [ ] Convert surround channel to stereo channel, disabled
+  - Merge and save audio..., 1st combo box item
+  - [ ] Capture game audio only, disabled
+  - [X] Capture mouse cursor movement, enabled
+  - [ ] Add framerate number, disabled
+
 
 ---
 

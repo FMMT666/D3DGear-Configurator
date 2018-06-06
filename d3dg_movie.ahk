@@ -35,7 +35,7 @@ WinMovie_FindAndActivate()
 ;-------------------------------------------------------------------------------------------------
 Gui, Add, Text, w800 Center, *** TESTING TESTING TESTING TESTING ***
 Gui, Add, Button, , Read Configuration
-Gui, Add, ListView, w800 h400 NoSort ReadOnly gListDebug, Setting|Value|Registry Name|Registry Value
+Gui, Add, ListView, w800 h500 NoSort ReadOnly gListDebug, Setting|Value|Registry Name|Registry Value
 Gui, Add, Button, , QUIT
 Gui, Show,, D3DGear Configurator
 
@@ -85,6 +85,15 @@ ButtonReadConfiguration:
         MsgBox Please activate the "Record Movie" tab in D3DGear first.
         return 
     }
+
+    ; also done below, but let's just use this to check whether D3DGear is in the registry at all...
+    RegRead, regSaveFolder2, HKEY_CURRENT_USER\Software\D3DGear\Movie, SaveFolder2
+    if( ErrorLevel )
+    {
+        MsgBox No "SaveFolder2" key/value pair in`nHKEY_CURRENT_USER\Software\D3DGear\Movie\SaveFolder2`nSuspicious. Stopping here...
+        return 
+    }
+
 
 
     ; --- BUTTON TESTING
