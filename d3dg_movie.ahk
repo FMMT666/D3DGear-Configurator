@@ -49,6 +49,11 @@ ListDebug:
 
 
 ;-------------------------------------------------------------------------------------------------
+ButtonAddRegistryDefaults:
+    return
+
+
+;-------------------------------------------------------------------------------------------------
 ButtonReadConfiguration:
 
     ; --- check that we are working with the right stuff here...
@@ -113,65 +118,107 @@ ButtonReadConfiguration:
     ; --- basic settings
     ControlGet, valEnabled, Enabled, , Edit2, A    ; testing for "enabled" by evaluating state of save folder edit field
     RegRead, regEnableMovie, HKEY_CURRENT_USER\Software\D3DGear\Movie, EnableMovie
+    if( ErrorLevel )
+        regEnableMovie := "*** MISSING ***"
 
     ControlGetText, txtSavePath, Edit2, A
     RegRead, regSaveFolder2, HKEY_CURRENT_USER\Software\D3DGear\Movie, SaveFolder2
+    if( ErrorLevel )
+        regSaveFolder2 := "*** MISSING ***"
 
     ControlGetText, txtCaptureMode, ComboBox12, A
     RegRead, regHotKeyMode, HKEY_CURRENT_USER\Software\D3DGear\General, HotKeyMode
+    if( ErrorLevel )
+        regHotKeyMode := "*** MISSING ***"
 
     ControlGetText, txtHotkey, Edit3, A
     RegRead, regHotkey2, HKEY_CURRENT_USER\Software\D3DGear\Movie, Hotkey2
+    if( ErrorLevel )
+        regHotkey2 := "*** MISSING ***"
 
 
     ; --- video settings
     ControlGetText, txtResolution, Edit4, A
     RegRead, regResolution2, HKEY_CURRENT_USER\Software\D3DGear\Movie, Resolution2
+    if( ErrorLevel )
+        regResolution2 := "*** MISSING ***"
 
     ControlGetText, txtFrameRate, Edit5, A
     RegRead, regMovieFrameRate2, HKEY_CURRENT_USER\Software\D3DGear\Movie, MovieFrameRate2
+    if( ErrorLevel )
+        regMovieFrameRate2 := "*** MISSING ***"
 
     ControlGetText, txtFormat, ComboBox1, A
     RegRead, regMovieFormat2, HKEY_CURRENT_USER\Software\D3DGear\Movie, MovieFormat2
+    if( ErrorLevel )
+        regMovieFormat2 := "*** MISSING ***"
 
     ControlGetText, txtThreads, ComboBox7, A
     RegRead, regMovieEncodingThread, HKEY_CURRENT_USER\Software\D3DGear\Movie, MovieEncodingThread
+    if( ErrorLevel )
+        regMovieEncodingThread := "*** MISSING ***"
 
     ControlGetText, txtVideoCodec, ComboBox2, A
     RegRead, regVideoCodec3, HKEY_CURRENT_USER\Software\D3DGear\Movie, VideoCodec3
+    if( ErrorLevel )
+        regVideoCodec3 := "*** MISSING ***"
 
     ControlGetText, txtQuality, ComboBox8, A
     RegRead, regMovieQuality, HKEY_CURRENT_USER\Software\D3DGear\Movie, MovieQuality
+    if( ErrorLevel )
+        regMovieQuality := "*** MISSING ***"
 
 
     ; --- audio settings
     ControlGetText, txtAudioCodec, ComboBox11, A
     RegRead, regAudioCodec3, HKEY_CURRENT_USER\Software\D3DGear\Movie, AudioCodec3
+    if( ErrorLevel )
+        regAudioCodec3 := "*** MISSING ***"
 
     RegRead, regEnableAudioRecording, HKEY_CURRENT_USER\Software\D3DGear\Movie, EnableAudioRecording
+    if( ErrorLevel )
+        regEnableAudioRecording := "*** MISSING ***"
 
     ControlGetText, txtMainSound, ComboBox6, A
     RegRead, regDeviceName2, HKEY_CURRENT_USER\Software\D3DGear\Movie, RecDeviceName2
+    if( ErrorLevel )
+        regDeviceName2 := "*** MISSING ***"
 
     ControlGetText, txtMainVolume, Edit6, A
     RegRead, regRecDeviceVolume, HKEY_CURRENT_USER\Software\D3DGear\Movie, RecDeviceVolume
+    if( ErrorLevel )
+        regRecDeviceVolume := "*** MISSING ***"
 
     RegRead, regEnableMicRecording, HKEY_CURRENT_USER\Software\D3DGear\Movie, EnableMicRecording
+    if( ErrorLevel )
+        regEnableMicRecording := "*** MISSING ***"
 
     ControlGetText, txtMicro, ComboBox5, A
     RegRead, regMicDeviceName2, HKEY_CURRENT_USER\Software\D3DGear\Movie, MicDeviceName2
+    if( ErrorLevel )
+        regMicDeviceName2 := "*** MISSING ***"
 
     ControlGetText, txtMicroVolume, Edit7, A
     RegRead, regMicDeviceVolume, HKEY_CURRENT_USER\Software\D3DGear\Movie, MicDeviceVolume
+    if( ErrorLevel )
+        regMicDeviceVolume := "*** MISSING ***"
 
     RegRead, regIgnoreSurroundChannel, HKEY_CURRENT_USER\Software\D3DGear\Movie, IgnoreSurroundChannel
+    if( ErrorLevel )
+        regIgnoreSurroundChannel := "*** MISSING ***"
 
     ControlGetText, txtAudioStreams, ComboBox13, A
     RegRead, regAudioStreamSave, HKEY_CURRENT_USER\Software\D3DGear\Movie, AudioStreamSave
+    if( ErrorLevel )
+        regAudioStreamSave := "*** MISSING ***"
 
     RegRead, regIncludeMouseCursor, HKEY_CURRENT_USER\Software\D3DGear\Movie, IncludeMouseCursor
+    if( ErrorLevel )
+        regIncludeMouseCursor := "*** MISSING ***"
 
     RegRead, regIncludeFramerate1, HKEY_CURRENT_USER\Software\D3DGear\Movie, IncludeFramerate1
+    if( ErrorLevel )
+        regIncludeFramerate1 := "*** MISSING ***"
 
 
     ; --- display all that stuff
