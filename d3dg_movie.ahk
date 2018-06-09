@@ -33,10 +33,11 @@ WinMovie_FindAndActivate()
 ;-------------------------------------------------------------------------------------------------
 ;--- main action
 ;-------------------------------------------------------------------------------------------------
-Gui, Add, Text, w800 Center, *** TESTING TESTING TESTING TESTING ***
+Gui, Add, Text, w930 Center, *** TESTING TESTING TESTING TESTING ***
 Gui, Add, Button, , Read Configuration
-Gui, Add, ListView, w800 h500 NoSort ReadOnly gListDebug, Setting|Value|Registry Name|Registry Value
+Gui, Add, Button, , Add Missing Defaults
 Gui, Add, Button, , QUIT
+Gui, Add, ListView, ym y25 x130 w800 h500 NoSort ReadOnly gListDebug, Setting|Value|Registry Name|Registry Value
 Gui, Show,, D3DGear Configurator
 
 return
@@ -49,7 +50,31 @@ ListDebug:
 
 
 ;-------------------------------------------------------------------------------------------------
-ButtonAddRegistryDefaults:
+ButtonAddMissingDefaults:
+
+    Loop % LV_GetCount()
+    {
+        LV_GetText( regValue, A_Index, 4 )
+        if InStr( regValue, "*** MISSING ***" )
+        {
+            LV_GetText( regKey, A_Index, 3 )
+            LV_Modify( A_Index, "Select")
+
+            if( regKey = "EnableMovie" )
+                LV_Modify( A_Index, "Col4", "1" )
+
+            if( regKey = "HotKeyMode" )
+                LV_Modify( A_Index, "Col4", "0" )
+
+            if( regKey = "Hotkey2" )
+                LV_Modify( A_Index, "Col4", "16777282" )
+
+            if( regKey = "Resolution2" )
+                LV_Modify( A_Index, "Col4", "83886800" )
+
+        }
+    }
+
     return
 
 
