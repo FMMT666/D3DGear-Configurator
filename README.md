@@ -121,6 +121,7 @@ NOT COMPLETELY FUNCTIONAL RIGHT NOW.
     - 80% of the "Record Movie" tab can now successfully be read
     - so much for a "hey, that'll only take 2..3 hours"
     - experimenting with adding the missing default values
+    - default, missing movie settings now complete
           
 
 

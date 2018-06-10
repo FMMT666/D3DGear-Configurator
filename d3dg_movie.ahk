@@ -72,6 +72,60 @@ ButtonAddMissingDefaults:
             if( regKey = "Resolution2" )
                 LV_Modify( A_Index, "Col4", "83886800" )
 
+            if( regKey = "MovieFrameRate2" )
+                LV_Modify( A_Index, "Col4", "30" )
+
+            if( regKey = "MovieFormat2" )
+                LV_Modify( A_Index, "Col4", "1" )
+
+            if( regKey = "MovieEncodingThread" )
+                LV_Modify( A_Index, "Col4", "0" )
+
+            if( regKey = "VideoCodec3" )
+                LV_Modify( A_Index, "Col4", "0" )
+
+            if( regKey = "MovieQuality" )
+                LV_Modify( A_Index, "Col4", "2" )
+
+            if( regKey = "AudioCodec3" )
+                LV_Modify( A_Index, "Col4", "1" )
+
+            if( regKey = "EnableAudioRecording" )
+                LV_Modify( A_Index, "Col4", "1" )
+
+            if( regKey = "DeviceName2" )
+                LV_Modify( A_Index, "Col4", "0" )
+
+            if( regKey = "RecDeviceVolume" )
+                LV_Modify( A_Index, "Col4", "100" )
+
+            if( regKey = "EnableMicRecording" )
+                LV_Modify( A_Index, "Col4", "0" )
+
+            if( regKey = "MicDeviceName2" )
+                LV_Modify( A_Index, "Col4", "0" )
+
+            if( regKey = "MicDeviceVolume" )
+                LV_Modify( A_Index, "Col4", "100" )
+
+            if( regKey = "IgnoreSurroundChannel" )
+                LV_Modify( A_Index, "Col4", "0" )
+
+            if( regKey = "AudioStreamSave" )
+                LV_Modify( A_Index, "Col4", "0" )
+
+            if( regKey = "AudioStreamSave" )
+                LV_Modify( A_Index, "Col4", "0" )
+
+            ; TODO (Game Audio Only)
+            ; if( regKey = "???" )
+            ;     LV_Modify( A_Index, "Col4", "0" )
+
+            if( regKey = "IncludeMouseCursor" )
+                LV_Modify( A_Index, "Col4", "1" )
+
+            if( regKey = "IncludeFramerate1" )
+                LV_Modify( A_Index, "Col4", "1" )
         }
     }
 
