@@ -108,6 +108,19 @@ NOT COMPLETELY FUNCTIONAL RIGHT NOW.
   - [X] Capture mouse cursor movement, enabled
   - [ ] Add framerate number, disabled
 
+#### Regedit Parameter Trick
+
+  The Windoze registry editor does not allow command line parameters, e.g. a path that should be opened, but
+  there's a nice workaround, to directly open the D3DGear (or other) settings.  
+
+  Just store the path that shoukd be opened in the key.
+
+    HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit\Lastkey
+
+  as a "REG_SZ" value, e.g.
+
+    HKCU\Software\D3DGear
+
 
 ---
 

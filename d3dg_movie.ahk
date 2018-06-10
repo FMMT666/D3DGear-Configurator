@@ -33,11 +33,20 @@ WinMovie_FindAndActivate()
 ;-------------------------------------------------------------------------------------------------
 ;--- main action
 ;-------------------------------------------------------------------------------------------------
-Gui, Add, Text, w930 Center, *** TESTING TESTING TESTING TESTING ***
+Gui, Add, Text, w940 Center, *** TESTING TESTING TESTING TESTING ***
 Gui, Add, Button, , Read Configuration
 Gui, Add, Button, , Add Missing Defaults
+
+Gui, Add, Text,, 
+Gui, Add, Button, , View Movie Registry
+Gui, Add, Button, , Write Movie Registry
+
+Gui, Add, Text,, 
 Gui, Add, Button, , QUIT
-Gui, Add, ListView, ym y25 x130 w800 h500 NoSort ReadOnly gListDebug, Setting|Value|Registry Name|Registry Value
+
+Gui, Add, ListView, ym y25 x140 w800 h500 NoSort ReadOnly gListDebug, Setting|Value|Registry Name|Registry Value
+; alternative QUIT button
+; Gui, Add, Button, x10 , QUIT
 Gui, Show,, D3DGear Configurator
 
 return
@@ -48,6 +57,19 @@ return
 ListDebug:
     return
 
+
+;-------------------------------------------------------------------------------------------------
+ButtonViewMovieRegistry:
+    RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit, Lastkey, HKEY_CURRENT_USER\Software\D3DGear\Movie
+    Run, regedit
+
+    return
+
+
+;-------------------------------------------------------------------------------------------------
+ButtonWriteMovieRegistry:
+    MsgBox, Soon...
+    return
 
 ;-------------------------------------------------------------------------------------------------
 ButtonAddMissingDefaults:
