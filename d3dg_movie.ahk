@@ -34,15 +34,28 @@ WinMovie_FindAndActivate()
 ;--- main action
 ;-------------------------------------------------------------------------------------------------
 Gui, Add, Text, w940 Center, *** TESTING TESTING TESTING TESTING ***
-Gui, Add, Button, , Read Configuration
-Gui, Add, Button, , Add Missing Defaults
+Gui, Add, Button, w120, Read Configuration
+Gui, Add, Button, w120 , Add Missing Defaults
 
 Gui, Add, Text,, 
-Gui, Add, Button, , View Movie Registry
-Gui, Add, Button, , Write Movie Registry
+Gui, Add, Button, w120, Save
+Gui, Add, Button, w120, Load
 
 Gui, Add, Text,, 
-Gui, Add, Button, , QUIT
+Gui, Add, Button, w120, Preset 1
+Gui, Add, Button, w120, Preset 2
+Gui, Add, Button, w120, Preset 3
+
+Gui, Add, Text,, 
+Gui, Add, Button, w120, View Movie Registry
+
+Gui, Add, Text,, 
+Gui, Add, Text,, 
+Gui, Add, Button, w120, Apply Settings
+
+Gui, Add, Text,, 
+Gui, Add, Text,, 
+Gui, Add, Button, w120 h30 , QUIT
 
 Gui, Add, ListView, ym y25 x140 w800 h500 NoSort ReadOnly gListDebug, Setting|Value|Registry Name|Registry Value
 ; alternative QUIT button
@@ -67,7 +80,7 @@ ButtonViewMovieRegistry:
 
 
 ;-------------------------------------------------------------------------------------------------
-ButtonWriteMovieRegistry:
+ButtonApplySettings:
     MsgBox, Soon...
     return
 
